@@ -1,0 +1,433 @@
+
+html, body{
+    margin:0;
+    background-color: #efefef;
+    font-family: sans-serif;
+    background-image: url("/content/photo/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+input[type="button"]{
+    border: none;
+    border-radius: 3px;
+    background-color: gray;
+    border: 1px solid gray;
+    outline: none;
+    color: white;
+
+}
+input[type="button"]:hover{
+    border: 1px solid lightblue;
+}
+input[type="file"]:hover{
+    border: 1px solid lightseagreen;
+}
+.wrapper{
+    position: relative;
+    width: 500px;
+    height: 630px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 5px;
+    /*background-color: lightgray;*/
+    background-color:rgba(256,256,256,0.6);
+    border-radius: 10px;
+
+}
+#loginWrapper{
+    position: fixed;
+    top: -50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(5,5,5,.6);
+    text-align: center;
+    color: #fff;
+    display: block;
+    padding-top: 200px;
+}
+#returnSystem {
+    font-size: 14px;
+    margin-left: 30px;
+}
+#returnSystem :hover{
+    color: yellow;
+}
+.banner{
+    height: 80px;
+    width: 100%;
+}
+.banner h1{
+    text-align: center;
+}
+.banner p{
+    float: left;
+    display: inline-block;
+}
+.controls{
+    height: 100px;
+    margin:5px 0px;
+    position: relative;
+}
+#status:hover{
+    text-decoration: underline;
+}
+
+
+#historyMsg{
+
+    /*position: relative;*/
+    overflow-x: hidden;
+    height: 400px;
+    background-color: #fff;
+    overflow-y: scroll;
+    padding: 2px;
+    border-radius: 3px;
+}
+#historyMsg img{
+    max-width: 99%;;
+}
+
+.items{
+    height: 30px;
+}
+#colorStyle{
+    width: 50px;
+    border:none;
+    padding: 0;
+}
+
+.imageLable {
+    position: relative;
+}
+#sendImage {
+    position: absolute;
+    width: 52px;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+/*end custom file input*/
+
+#messageInput {
+    width: 440px;
+    max-width: 440px;
+    height: 80px;
+    max-height: 90px;
+}
+#sendBtn {
+    width: 50px;
+    height: 86px;
+    float: right;
+}
+#emojiWrapper {
+    display: none;
+    width: 500px;
+    bottom: 105px;
+    position: absolute;
+    background-color: #aaa;
+    box-shadow: 0 0 10px #555;
+}
+#emojiWrapper img {
+    margin: 2px;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+}
+#emojiWrapper img:hover {
+    background-color: blue;
+}
+.emoji{
+    border-radius: 3px;
+    display: inline;
+}
+footer {
+    text-align: center;
+}
+
+
+/*系统消息的样式*/
+.systemDialog{
+    text-align: center;
+    font-size: 12px;
+    /*border-radius: 2px;
+    background-color: lightpink;*/
+    /*width: 30%;*/
+}
+/*对方对话框样式*/
+.otherDialog{
+    /*border: 2px solid blueviolet;*/
+    position: relative;
+}
+.otherDialog img.userpicChat{
+    margin: 0px;
+    padding: 0px;
+    border-radius: 3px;
+     /*border: 2px solid fuchsia;*/
+}
+.otherDialog div{
+    width: 60%;
+    /*border: 2px solid firebrick;*/
+    position: relative;
+    top: -32px;
+    left: 55px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    /**/background-color: lightgreen;
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+    text-align: justify;
+
+}
+
+.otherDialog span{
+    /*border: 2px solid cornflowerblue;*/
+    position: relative;
+    top:-35px;
+    left: 15px;
+    color:#ddd;
+    font-size: 14px;
+
+
+}
+/*自己对话框的样式*/
+/*.meDialog{*/
+    /*text-align: right;*/
+/*}*/
+.meDialog{
+    /*border: 2px solid blueviolet;*/
+    /**/position: relative;
+    margin-right: 5px;
+
+}
+.meDialog img.userpicChat{
+    /**/margin: 0px;
+    /**/padding: 0px;
+    /**/border-radius: 3px;
+    /*border: 2px solid fuchsia;*/
+    position: relative;
+    left: 430px;
+}
+.meDialog div{
+    /*display: inline-block;*/
+    /**/max-width: 60%;
+
+    /*border: 2px solid firebrick;*/
+    /**/position: relative;
+    /**/top: -32px;
+    /**/right: -128px;
+    /**/margin-bottom: 5px;
+    /**/font-size: 16px;
+    /**/background-color: greenyellow;
+    /**/border-radius: 5px;
+    /**/padding: 5px 5px 5px 5px;
+    /**/text-align: right;
+
+}
+.meDialog div span{
+    border: 2px solid red;
+}
+.meDialog span{
+    /*border: 2px solid cornflowerblue;*/
+    /**/position: relative;
+    /**/top:-35px;
+    /**/right:-285px;
+    /**/color:#ddd;
+    /**/font-size: 14px;
+
+
+}
+
+
+/*系统提供的4个自定义头像*/
+#userpic span{
+    margin-top: 10px;
+    width: 128px;
+    height: 128px;
+    display: inline-block;
+    border: 2px solid #ffffff;
+    background-image: url('/content/userpic/userMin.jpg');
+}
+#userpic span:hover{
+    border: 2px solid orange;
+}
+#user1{
+    background-position: 0px -128px;
+}
+#user2{
+    background-position: -128px -128px;
+}
+#user3{
+    background-position: -256px -128px;
+}
+#user4{
+    background-position: -384px -128px;
+}
+.userpicChat{
+    width: 48px;
+    height: 48px;
+}
+
+/*用户上传图片*/
+#loadUserPic{
+    width: 550px;
+    height: 160px;
+    /*border: 2px solid red;*/
+    position: relative;
+    /*left: 356px;*/
+    margin: 0 auto;
+    top:5px;
+    display: none;
+
+}
+#img0{
+    border: 2px solid whitesmoke;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+#nickWrapper{
+    display: none;
+
+}
+#selfPicLogin{
+    display: none;
+    text-align: center;
+    position: relative;
+    left: 255px;
+
+}
+#loginBtn{
+    margin: 0 auto;
+}
+/*支持投票操作*/
+#pollInput{
+    display: none;
+    width: 500px;
+    height: 200px;
+    bottom: 105px;
+    position: absolute;
+    background-color: rgba(107,194,53,0.75);/*rgba(166,137,124,0.75);*/
+    box-shadow: 0 0 10px #555;
+    font-size: 16px;
+    color: white;
+
+}
+#showChoice{
+
+    height: 130px;
+    width: 100%;
+    background-color: rgba(107,194,53,0.35);
+    /**/overflow-y: scroll;
+}
+/*最小化和关闭*/
+
+#minPoll{
+    border: 1px solid yellow;
+    float: right;
+}
+/*选项列表*/
+#pollInput ul li{
+    font-size: 16px;
+    line-height: 16px;
+    color: white;
+    width: 300px;
+    /*border:2px solid forestgreen;*/
+}
+#pollInput ul a{
+
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    float: right;
+}
+
+
+/*处理显示投票结果*/
+#pollShow {
+    z-index: 10;
+    display: none;
+    width: 500px;
+    background-color: rgba(174,221,129,0.85);
+    /*position: fixed;*/
+    position: absolute;
+    bottom: 139px;
+    right: 5px;
+    max-height: 150px;
+    height: auto;
+    overflow: auto;/**/
+
+}
+#pollShow h3{
+    margin: 0 auto;
+
+    color: #555555;
+}
+#pollShow button{
+    display: none;
+    background-color: white;
+    color: greenyellow;
+    border-radius: 15px;
+    width: 100px;
+    text-shadow: none;
+    border: 2px solid lightgreen;
+    float: right;
+    /*border-radius: 5px;*/
+}
+
+table td{
+    /*border: 2px solid blueviolet;*/
+    text-align: left;
+    /*width: 20px;*/
+    max-width: 350px;
+
+}
+table tr a{
+    text-decoration: none;
+    color: white;
+}
+/*在线用户显示*/
+
+#userOnLine{
+    float: left;
+    display: none;
+    margin-top: 3px;
+    width:490px ;
+    height: 75px;
+
+}
+#userOnLine img{
+
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 40px;
+    border: 3px solid lightsalmon;
+}
+#userOnLine div{
+    /*border: 2px solid green;*/
+    text-align: center;
+    width: 60px;
+    height: 75px;
+    display: inline-block;
+    /*float: left;*/
+}
+#userOnLine p{
+    /*border: 2px solid red;*/
+    /*display: block;*/
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+/*处理自己显示图片的样式*/
+.mepic{
+    border: 2px solid rosybrown;
+    max-width: 300px;
+
+}
+.mepic
+.mepic img:hover{
+    border: 1px solid gray;
+}

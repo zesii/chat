@@ -1,0 +1,7 @@
+#userpic span{
+    border:2px solid #ffffff;
+}
+#userpic span.highlight{
+    border: 2px solid orange;
+
+}

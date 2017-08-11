@@ -1,0 +1,110 @@
+<!--<h1>this is index</h1>
+<input type="button" id="sendBtn" value="send">
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect();
+    var btn = document.getElementById("sendBtn");
+    btn.onclick = function(){
+        socket.emit('foo','hello')
+    }
+</script>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CHAT chat</title>
+    <!--<link rel="stylesheet" href="lib/bootstrap.css">-->
+    <link rel="stylesheet" href="styles/show.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="banner">
+            <h1>CHAT chat</h1>
+            <span id="status"></span>
+
+        </div>
+        <div id="historyMsg">
+            <div id="userOnLine"></div>
+            <div id="pollShow">
+                <h3 id="theme"></h3><!--<span id="minPoll">-</span>-->
+                <button id="deletePoll">delete poll</button>
+                <table id="pollResult"></table>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="items">
+                <input id="colorStyle" type="color" placeholder="#000" title="font color" />
+                <!--<input id="pickColor" type="button" title="font color" value="color">-->
+                <input id="emoji" type="button" value="emoji" title="emoji">
+                <label for="sendImage" class="imageLable">
+                    <input type="button" value="image" />
+                    <input id="sendImage" type="file" value="image" />
+                </label>
+                <input id="clearBtn" type="button" value="clear" title="clear screen" />
+                <input id="poll" type="button" value="poll">
+            </div>
+            <textarea id="messageInput" placeholder="enter to send"></textarea>
+            <input id="sendBtn" type="button" value="SEND">
+            <!--处理emoji表情-->
+            <div id="emojiWrapper">
+
+            </div>
+            <!--处理投票-->
+            <div id="pollInput">
+                <label for="pollTheme">theme  : </label>
+                <input type="text" id="pollTheme"><br/>
+
+                <label for="pollChoices">choices: </label>
+                <input type="text" id="pollChoices">
+                <input type="button" value="add choices" id="addPollChoices"><br/>
+
+                <div id="showChoice"></div>
+                <input type="button" id="submitPoll" value="let's poll">
+            </div>
+        </div>
+    </div>
+    <div id="loginWrapper">
+
+        <div id="nickWrapper">
+            <p id="info">connecting to server...</p>
+            <input type="text" placeholder="nickname" id="nicknameInput" >
+            <div id="userpic">
+                <p>get yourself a picture :)　　
+                if you don't like, <a id="loadpic" href="#">click here</a></p>
+                <span id="user1"></span>
+                <span id="user2"></span>
+                <span id="user3"></span>
+                <span id="user4"></span>
+            </div>
+        </div>
+        <div id="loadUserPic">
+            <form action="/" method="post" id="userpicForm" enctype="multipart/form-data">
+            <!-- <form>-->
+                 <!---->get yourself a nickname :)<a id="returnSystem" href="#">return</a><br/><br/>
+                 <input type="input" id="uniNickname" name="uniNickname" placeholder="nickName"><br/><br/>
+                please choose the photo you like<br/><br/>
+                <input type="file" name="img" id="imgToLoad">
+                <input id="submitUserPic" type="submit" value="Upload"><br/><br/>
+                (we would like the photo not larger than 128*128)<br/><br/>
+
+            </form>
+            <img id="img0"/><br/>
+            <input type="button" value="OK" id="selfPicLogin">
+        </div>
+        <input type="button" value="OK" id="loginBtn" />
+    </div>
+    <!--颜色部分-->
+    <!--<div id="colorCanvas">-->
+        <!--<canvas height="200px" width="200px"></canvas>-->
+    <!--</div>-->
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="lib/jquery-2.1.1.js"></script>
+    <script src="javascript/Hichat.js"></script>
+    <!--<script src="javascript/colorPick.js"></script>-->
+</body>
+</html>
