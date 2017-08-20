@@ -178,6 +178,7 @@ footer {
     border-radius: 5px;
     padding: 5px 5px 5px 5px;
     text-align: justify;
+    word-wrap:break-word;
 
 }
 
@@ -212,8 +213,9 @@ footer {
 .meDialog div{
     /*display: inline-block;*/
     /**/max-width: 60%;
-
+    width: auto;
     /*border: 2px solid firebrick;*/
+    word-wrap:break-word;
     /**/position: relative;
     /**/top: -32px;
     /**/right: -128px;
@@ -238,6 +240,52 @@ footer {
 
 
 }
+/*同边对话框样式*/
+.sameSideDialog{
+    /*border: 2px solid blueviolet;*/
+    /**/position: relative;
+    margin-right: 5px;
+
+}
+.sameSideDialog img.userpicChat{
+    /**/margin: 0px;
+    /**/padding: 0px;
+    /**/border-radius: 3px;
+    /*border: 2px solid fuchsia;*/
+    position: relative;
+    left: 430px;
+}
+.sameSideDialog div{
+    /*display: inline-block;*/
+    /**/max-width: 60%;
+
+    /*border: 2px solid firebrick;*/
+    /**/position: relative;
+    /**/top: -32px;
+    /**/right: -128px;
+    /**/margin-bottom: 5px;
+    /**/font-size: 16px;
+    /**/background-color: lightblue;
+    /**/border-radius: 5px;
+    /**/padding: 5px 5px 5px 5px;
+    /**/text-align: right;
+
+}
+.sameSideDialog div span{
+    border: 2px solid red;
+}
+.sameSideDialog span{
+    /*border: 2px solid cornflowerblue;*/
+    /**/position: relative;
+    /**/top:-35px;
+    /**/right:-285px;
+    /**/color:#ddd;
+    /**/font-size: 14px;
+
+
+}
+
+
 
 
 /*系统提供的4个自定义头像*/
@@ -430,4 +478,39 @@ table tr a{
 .mepic
 .mepic img:hover{
     border: 1px solid gray;
+}
+
+.otherDialog .mySide{
+    display: inline-block;
+    position: absolute;
+    width: 48px;
+    height: 20px;
+    top: 28px;
+    left: 0px;
+    background: rgb(255,198,109);
+    opacity: 0;
+    text-align: center;
+    font-size: 12px;
+    color:black;
+
+}
+.otherDialog .mySide:hover{
+    /*display: inline-block;*/
+    opacity: 1;
+}
+.sameSideDialog .returnSide{
+    display: inline-block;
+    position: absolute;
+    width: 48px;
+    height: 20px;
+    top: 28px;
+    right: -3.5px;
+    background: rgb(255,198,109);
+    opacity: 0;
+    text-align: center;
+    font-size: 12px;
+    color:black;
+}
+.sameSideDialog .returnSide:hover{
+    opacity: 1;
 }

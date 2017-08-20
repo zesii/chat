@@ -10,9 +10,11 @@ window.onload = function(){
 
 var HiChat = function(){
     this.socket = null;
+    this.mySide = [];
 };
 
 HiChat.prototype = {
+    //mySide :[],
     init:function(){
 
         var that = this;
@@ -466,10 +468,8 @@ HiChat.prototype = {
 
 
 
-
-
-
     //实时显示投票结果
+
     _showNewResult:function(theme,arr){
 
         //document.getElementById('pollShow').style.display = 'block'
@@ -549,6 +549,7 @@ HiChat.prototype = {
     },
 
     _displayNewMsg:function(user,msg,color,userpicId){
+        var self = this;
         //console.log(userpicId);
         var container = document.getElementById('historyMsg'),
             msgToDisplay = document.createElement('div'),
@@ -558,7 +559,7 @@ HiChat.prototype = {
             date = new Date().toTimeString().substr(0,8),
             msg = this._showEmoji(msg);
         timeUser.innerHTML=user+"("+date+")";
-        timeUser.id = "timespan";
+        timeUser.class = "timespan";
         if(userpicId){
             //alert(userpicId);s
             var userPic = document.createElement('img');
@@ -567,12 +568,39 @@ HiChat.prototype = {
         }
         msgToDisplay.style.color = color || '#000';
         //自己发送的消息显示
-        if(user =='me'){
-            msgToDisplay.className = 'meDialog';
-            dialog.innerHTML = msg;
-            msgToDisplay.appendChild(userPic);
-            msgToDisplay.appendChild(timeUser);
-            msgToDisplay.appendChild(dialog);
+        //if(self.mySide.indexOf(user)>-1){
+        //    msgToDisplay.className = 'meDialog';
+        //    dialog.innerHTML = msg;
+        //    msgToDisplay.appendChild(userPic);
+        //    msgToDisplay.appendChild(timeUser);
+        //    msgToDisplay.appendChild(dialog);
+        //}
+        if(user =='me' || self.mySide.indexOf(user)>-1){
+            if(self.mySide.indexOf(user)>-1){
+                msgToDisplay.className = 'sameSideDialog';
+                var returnOriginSide = document.createElement('span');
+                returnOriginSide.classList.add('returnSide');
+                returnOriginSide.innerText = "<--"
+                returnOriginSide.onclick = function(event){
+                    self._returnOriginSide(event,self)
+                }
+                dialog.innerHTML = msg;
+                msgToDisplay.appendChild(userPic);
+                msgToDisplay.appendChild(timeUser);
+                msgToDisplay.appendChild(dialog);
+                msgToDisplay.appendChild(returnOriginSide)
+            }else{
+                msgToDisplay.className = 'meDialog';
+                dialog.innerHTML = msg;
+                msgToDisplay.appendChild(userPic);
+                msgToDisplay.appendChild(timeUser);
+                msgToDisplay.appendChild(dialog);
+            }
+
+            //dialog.innerHTML = msg;
+            //msgToDisplay.appendChild(userPic);
+            //msgToDisplay.appendChild(timeUser);
+            //msgToDisplay.appendChild(dialog);
         }else{
             if(user =='system'){
                 //console.log("system in")
@@ -580,17 +608,62 @@ HiChat.prototype = {
                 dialog.innerHTML = msg;
                 msgToDisplay.append(dialog)
             }else{
+                var addMySide = document.createElement('span');
+                addMySide.innerText = "-->"
+                addMySide.classList.add('mySide');
+                //$(addMySide).click(self._toOtherSide);
+                addMySide.onclick = function(event){
+                    self._toOtherSide(event,self)
+                }
+
                 msgToDisplay.className ='otherDialog';
                 dialog.innerHTML = msg;
                 msgToDisplay.appendChild(userPic);
                 msgToDisplay.appendChild(timeUser);
                 msgToDisplay.appendChild(dialog);
+                msgToDisplay.appendChild(addMySide)
             }
 
 
         }
         container.appendChild(msgToDisplay);
         container.scrollTop = container.scrollHeight;
+    },
+    _returnOriginSide:function(event,self){
+        var result = confirm('move this person to origin side?');
+        if(result){
+            var clickTarget = event.target;
+            var userinfo = $(clickTarget).parent().children()[1].innerText;
+            var userName = userinfo.split('(')[0];
+            //console.log(userName)
+            console.log(self);
+            console.log(self.mySide);
+            var index =self.mySide.indexOf(userName)
+            if(index!=-1){
+
+                self.mySide.splice(index,1);
+                console.log(self.mySide)
+            }
+        }
+
+
+    },
+    _toOtherSide:function(event,self){
+        //alert('hello')
+        var result = confirm('move this person to your side?');
+        if(result){
+            var clickTarget = event.target;
+            var userinfo = $(clickTarget).parent().children()[1].innerText;
+            var userName = userinfo.split('(')[0];
+            //console.log(userName)
+            console.log(self);
+            console.log(self.mySide);
+            if(self.mySide.indexOf(userName)==-1){
+                self.mySide.push(userName);
+            }
+        }
+
+
     },
     _displayImage:function(user,imgData,userpicId){
         //var container = document.getElementById('historyMsg'),
